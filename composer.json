@@ -1,14 +1,15 @@
 {
     "name": "desolatormagno/laravel-msg",
     "description": "Paquete para mostrar mensajes en el front",
-    "keywords": ["laravel", "blade", "sweetalert2"],
+    "keywords": ["laravel", "blade", "sweetalert2", "desolatormagno","laravel-msg"],
     "license": "MIT",
+    "homepage": "https://github.com/DesolatorMagno/laravel-msg",  
     "authors": [
         {
             "name": "Reny Ramos",
             "email": "renyramosgarcia@gmail.com"
         }
-    ],    
+    ],
     "require": {
         "php": ">=7.1.3",
         "illuminate/support": "5.6.*|5.7.*|5.8.*",
