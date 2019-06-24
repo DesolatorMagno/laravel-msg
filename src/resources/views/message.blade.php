@@ -12,7 +12,7 @@
 
             Toast.fire({
                 type: "{{ session('message_type') }}",
-                text: "{{ session('message') }}"
+                title: "{{ session('message') }}"
             })
         };
     showMensage();
