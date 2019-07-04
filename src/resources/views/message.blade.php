@@ -1,4 +1,4 @@
-@if (session('message'))
+@if (session('message_type'))
     @push('script')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script>
@@ -12,7 +12,8 @@
 
             Toast.fire({
                 type: "{{ session('message_type') }}",
-                title: "{{ session('message') }}"
+                title: "{{ session('title') }}",
+                text: "{{ session('message') }}"
             })
         };
     showMensage();
