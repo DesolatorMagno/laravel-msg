@@ -15,7 +15,6 @@ class LaravelMsgServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__ . '/resources/views/message.blade.php' => resource_path('views/laravel-msg/message.blade.php'),
-            //__DIR__ . '/LaravelMsg.php.php'                => app_path('Http/Helpers/LaravelMsg/LaravelMsg.php'),
         ], 'laravel-msg');
 
     }
