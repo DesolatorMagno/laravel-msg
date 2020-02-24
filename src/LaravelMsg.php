@@ -11,61 +11,61 @@ class Message
     /**
      * Envia un mensaje de exito al front.
      *
-     * @param string $title
      * @param string $message
+     * @param string $title
      * @return void
      */
-    public static function success(string $title = null, string $message = null)
+    public static function success(string $message = null, string $title = null)
     {
-        return self::message($title, $message, 'success');
+        return self::message($message, $title, 'success');
     }
 
     /**
      * Envia un mensaje informativo al front
      *
-     * @param string $title
      * @param string $message
+     * @param string $title
      * @return void
      */
-    public static function info(string $title = null, string $message = null)
+    public static function info(string $message = null, string $title = null)
     {
-        return self::message($title, $message, 'info');
+        return self::message($message, $title, 'info');
     }
 
     /**
      * Envia un mensaje de Advertencia al front
      *
-     * @param string $title
      * @param string $message
+     * @param string $title
      * @return void
      */
-    public static function warning(string $title = null, string $message = null)
+    public static function warning(string $message = null, string $title = null)
     {
-        return self::message($title, $message, 'warning');
+        return self::message($message, $title, 'warning');
     }
 
     /**
      * Envia un mensaje de error al front.
      *
-     * @param string $title
      * @param string $message
+     * @param string $title
      * @return void
      */
-    public static function error(string $title = null, string $message = null)
+    public static function error(string $message = null, string $title = null)
     {
-        return self::message($title, $message, 'error');
+        return self::message($message, $title, 'error');
     }
 
     /**
      * Envia una pregunta al front (sin opcion de respuesta)
      *
-     * @param string $title
      * @param string $message
+     * @param string $title
      * @return void
      */
-    public static function question(string $title = null, string $message = null)
+    public static function question(string $message = null, string $title = null)
     {
-        return self::message($title, $message, 'question');
+        return self::message($message, $title, 'question');
     }
 
     /**
@@ -74,19 +74,19 @@ class Message
      * A pesar de que la utilizacion principal es para servir de ayuda a las demas funciones y no de utilizarse
      * sola, es posible utilizarla como esta para pasar algun tipo distinto de mensaje.
      *
-     * @param string $title
      * @param string $message
+     * @param string $title
      * @param string $type
      * @return void
      */
-    public static function message(string $title = null, string $message = null, string $type = 'success')
+    public static function message(string $message = null, string $title = null, string $type = 'success')
     {
         \Session::flash(self::$typeFieldName, $type);
-        if (isset($message)) {
+        if (isset($title)) {
             \Session::flash(self::$titleFieldName, $title);
             \Session::flash(self::$messageFieldName, $message);
         } else {
-            \Session::flash(self::$titleFieldName, $title);
+            \Session::flash(self::$titleFieldName, $message);
         }
     }
 }
