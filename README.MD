@@ -23,10 +23,10 @@ use DesolatorMagno\LaravelMsg\Message as Msg;
 .
 Msg::success('Bienvenido usuario');
 
-Msg::success('Acción Exitosa', "El mensaje fue enviado a $usuario");
+Msg::success("El mensaje fue enviado a $usuario", 'Acción Exitosa');
 ```
 
-Incluir el archivo de mensaje al inicio del controlador o archivo en el que se desea utilizar luego utilizar la clase para llamar dinamicamente a una de las funciones que provee el paquete según el estilo visual que se desee mostrar, pasando por parámetro el mensaje a mostrar.
+Incluir el archivo de mensaje al inicio del controlador o archivo en el que se desea utilizar luego utilizar la clase para llamar dinamicamente a una de las funciones que provee el paquete según el estilo visual que se desee mostrar, pasando por parámetro el mensaje, o el mensaje y titulo a mostrar.
 
 ### Métodos
 
@@ -38,6 +38,16 @@ Incluir el archivo de mensaje al inicio del controlador o archivo en el que se d
 
 ## Front
 
+### Forma actual
+
+``` php
+@include('laravel-msg::msg')
+```
+Colocar la siguiente linea al final del body para incluir la vista junto con su script.
+
+
+
+### Forma anterior
 ``` php
 @include('laravel-msg.message')
 
@@ -74,7 +84,7 @@ Msg::error('Usuario eliminado');
 Ejemplo de un mensaje de informativo con titulo y mensaje.
 
 ``` php
-Msg::info('Notificacion', "Nuevo mensaje de Pedro");
+Msg::info('Nuevo mensaje de Pedro', 'Notificacion');
 ```
 
 ![Ejemplo info](ejemplo-info-min.png)
