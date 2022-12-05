@@ -1,7 +1,9 @@
 <?php
 namespace DesolatorMagno\LaravelMsg;
 
-class Message
+use Session;
+
+class LaravelMsg
 {
 
     static $typeFieldName    = "message_type";
@@ -9,84 +11,84 @@ class Message
     static $titleFieldName   = "title";
 
     /**
-     * Envia un mensaje de exito al front.
+     * Send a successful msg to the front.
      *
-     * @param string $message
-     * @param string $title
+     * @param string|null $message
+     * @param string|null $title
      * @return void
      */
     public static function success(string $message = null, string $title = null)
     {
-        return self::message($message, $title, 'success');
+        self::message($message, $title);
     }
 
     /**
-     * Envia un mensaje informativo al front
+     * Send an info msg to the front
      *
-     * @param string $message
-     * @param string $title
+     * @param string|null $message
+     * @param string|null $title
      * @return void
      */
     public static function info(string $message = null, string $title = null)
     {
-        return self::message($message, $title, 'info');
+        self::message($message, $title, 'info');
     }
 
     /**
-     * Envia un mensaje de Advertencia al front
+     * Send a warning message to the front.
      *
-     * @param string $message
-     * @param string $title
+     * @param string|null $message
+     * @param string|null $title
      * @return void
      */
     public static function warning(string $message = null, string $title = null)
     {
-        return self::message($message, $title, 'warning');
+        self::message($message, $title, 'warning');
     }
 
     /**
-     * Envia un mensaje de error al front.
+     * Send an error msg to the front.
      *
-     * @param string $message
-     * @param string $title
+     * @param string|null $message
+     * @param string|null $title
      * @return void
      */
     public static function error(string $message = null, string $title = null)
     {
-        return self::message($message, $title, 'error');
+        self::message($message, $title, 'error');
     }
 
     /**
-     * Envia una pregunta al front (sin opcion de respuesta)
+     * Send a question type msg to the front (with no option for answer)
      *
-     * @param string $message
-     * @param string $title
+     * @param string|null $message
+     * @param string|null $title
      * @return void
      */
     public static function question(string $message = null, string $title = null)
     {
-        return self::message($message, $title, 'question');
+        self::message($message, $title, 'question');
     }
 
     /**
-     * Funcion utilizada principalmente por las demas funciones.
+     * Main method that do the hard work.
      *
-     * A pesar de que la utilizacion principal es para servir de ayuda a las demas funciones y no de utilizarse
-     * sola, es posible utilizarla como esta para pasar algun tipo distinto de mensaje.
+     * Even if the main purpose for these method is to help the other (and simplify) it can also be uses as it is
+     * to send some kind of personalized type of message.
      *
-     * @param string $message
-     * @param string $title
+     * @param string|null $message
+     * @param string|null $title
      * @param string $type
      * @return void
      */
     public static function message(string $message = null, string $title = null, string $type = 'success')
     {
-        \Session::flash(self::$typeFieldName, $type);
+        Session::flash(self::$typeFieldName, $type);
         if (isset($title)) {
-            \Session::flash(self::$titleFieldName, $title);
-            \Session::flash(self::$messageFieldName, $message);
+            Session::flash(self::$titleFieldName, $title);
+            Session::flash(self::$messageFieldName, $message);
         } else {
-            \Session::flash(self::$titleFieldName, $message);
+            Session::flash(self::$titleFieldName, $message);
         }
     }
 }
